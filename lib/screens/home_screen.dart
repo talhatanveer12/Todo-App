@@ -8,8 +8,6 @@ import 'package:todo_app/state/providers/user_provider.dart';
 import 'package:todo_app/widgets/Modal/add_task.dart';
 import 'package:todo_app/widgets/bottom_bar.dart';
 
-const List<String> list = <String>['Today', 'Yesterday', '1 Week'];
-const List<String> list1 = <String>['Completed', 'Deleted', 'Pending'];
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,8 +20,6 @@ class _MyHomeWidgetState extends State<HomeScreen>
     with TickerProviderStateMixin {
   final int number = 1;
   final IsarService _isarService = IsarService();
-  String dropdownValue = list.first;
-  String dropdownValue1 = list1.first;
   late final TabController _tabController;
 
   @override
@@ -81,11 +77,11 @@ class _MyHomeWidgetState extends State<HomeScreen>
                                 child: Image.network(
                                   userInfo.user?.photoURL ?? '',
                                   width:
-                                      40, // Set the width to twice the radius
+                                      40, 
                                   height:
-                                      40, // Set the height to twice the radius
+                                      40, 
                                   fit: BoxFit
-                                      .cover, // This ensures the image covers the oval shape
+                                      .cover, 
                                 ),
                               ),
                             ),
@@ -377,217 +373,6 @@ class _MyHomeWidgetState extends State<HomeScreen>
                                 ),
                               ],
                             )),
-                            // Align(
-                            //   alignment: Alignment.topLeft,
-                            //   child: Container(
-                            //     margin: const EdgeInsets.only(top: 10),
-                            //     width: MediaQuery.of(context).size.width * .25,
-                            //     padding:
-                            //         const EdgeInsets.only(right: 10, left: 10),
-                            //     decoration: BoxDecoration(
-                            //       color: Colors.black38,
-                            //       borderRadius: BorderRadius.circular(10),
-                            //     ),
-
-                            //     alignment: Alignment.topLeft,
-                            //     // dropdown below..
-                            //     child: DropdownButton<String>(
-                            //       value: dropdownValue,
-                            //       onChanged: (value) =>
-                            //           setState(() => dropdownValue = value!),
-                            //       // onChanged: (String newValue)
-                            //       //   setState(() => dropdownValue = newValue),
-                            //       items: list
-                            //           .map<DropdownMenuItem<String>>(
-                            //               (String value) =>
-                            //                   DropdownMenuItem<String>(
-                            //                     value: value,
-                            //                     child: Text(value),
-                            //                   ))
-                            //           .toList(),
-
-                            //       // add extra sugar..
-                            //       icon: SvgPicture.asset(
-                            //           'lib/resources/assets/svg/arrow.svg'),
-                            //       iconSize: 42,
-                            //       underline: const SizedBox(),
-                            //       style: const TextStyle(color: Colors.white),
-                            //       dropdownColor: Colors.black,
-                            //     ),
-                            //   ),
-                            // ),
-                            // Container(
-                            //   margin: const EdgeInsets.only(top: 10),
-                            //   height: MediaQuery.of(context).size.height * .28,
-                            //   child: ListView.separated(
-                            //     itemBuilder: (context, index) {
-                            //       return ListTile(
-                            //         onTap: () => Navigator.pushNamed(
-                            //           context,
-                            //           '/edit-task',
-                            //           arguments: task.todo[index].id,
-                            //         ),
-                            //         tileColor:
-                            //             const Color.fromARGB(31, 163, 163, 163),
-                            //         leading: SvgPicture.asset(
-                            //             'lib/resources/assets/svg/circle.svg'),
-                            //         title: Text(
-                            //           '${task.todo[index].name}',
-                            //           style: const TextStyle(color: Colors.white),
-                            //         ),
-                            //         subtitle: Row(
-                            //           mainAxisAlignment:
-                            //               MainAxisAlignment.spaceBetween,
-                            //           children: [
-                            //             Flexible(
-                            //               child: Text(
-                            //                 '${task.todo[index].description}',
-                            //                 maxLines: 1,
-                            //                 overflow: TextOverflow.ellipsis,
-                            //                 style: const TextStyle(
-                            //                     color: Colors.white),
-                            //               ),
-                            //             ),
-                            //             Row(
-                            //               children: [
-                            //                 Container(
-                            //                     color: Colors.purple,
-                            //                     child: Padding(
-                            //                       padding:
-                            //                           const EdgeInsets.all(8.0),
-                            //                       child: Row(
-                            //                         mainAxisAlignment:
-                            //                             MainAxisAlignment
-                            //                                 .spaceBetween,
-                            //                         crossAxisAlignment:
-                            //                             CrossAxisAlignment.center,
-                            //                         children: [
-                            //                           Icon(
-                            //                             IconData(
-                            //                                 task
-                            //                                         .todo[index]
-                            //                                         .category
-                            //                                         .value
-                            //                                         ?.icon ??
-                            //                                     0,
-                            //                                 fontFamily:
-                            //                                     'MaterialIcons'),
-                            //                             size: 16,
-                            //                           ),
-                            //                           Padding(
-                            //                             padding:
-                            //                                 const EdgeInsets.only(
-                            //                                     top: 4.0,
-                            //                                     left: 4.0),
-                            //                             child: Text(
-                            //                               '${task.todo[index].category.value?.name}',
-                            //                               style: const TextStyle(
-                            //                                   color: Colors.white,
-                            //                                   fontSize: 11),
-                            //                             ),
-                            //                           ),
-                            //                         ],
-                            //                       ),
-                            //                     )),
-                            //                 Container(
-                            //                     color: Colors.blue,
-                            //                     child: Padding(
-                            //                       padding:
-                            //                           const EdgeInsets.all(8.0),
-                            //                       child: Row(
-                            //                         children: [
-                            //                           SvgPicture.asset(
-                            //                             'lib/resources/assets/svg/flag.svg',
-                            //                             width: 14,
-                            //                             height: 14,
-                            //                           ),
-                            //                           Text(
-                            //                             '${task.todo[index].flag}',
-                            //                             style: const TextStyle(
-                            //                                 color: Colors.white),
-                            //                           ),
-                            //                         ],
-                            //                       ),
-                            //                     )),
-                            //               ],
-                            //             ),
-                            //           ],
-                            //         ),
-                            //       );
-                            //     },
-                            //     itemCount: task.todo.length,
-                            //     separatorBuilder: (context, index) {
-                            //       return const Padding(
-                            //           padding: EdgeInsets.all(8));
-                            //     },
-                            //   ),
-                            // ),
-                            // Align(
-                            //   alignment: Alignment.topLeft,
-                            //   child: Container(
-                            //     margin: const EdgeInsets.only(top: 10),
-                            //     width: MediaQuery.of(context).size.width * .26,
-                            //     padding:
-                            //         const EdgeInsets.only(right: 10, left: 10),
-                            //     decoration: BoxDecoration(
-                            //       color: Colors.black38,
-                            //       borderRadius: BorderRadius.circular(10),
-                            //     ),
-
-                            //     alignment: Alignment.topLeft,
-                            //     // dropdown below..
-                            //     child: DropdownButton<String>(
-                            //       value: dropdownValue1,
-                            //       onChanged: (value) =>
-                            //           setState(() => dropdownValue1 = value!),
-                            //       // onChanged: (String newValue)
-                            //       //   setState(() => dropdownValue = newValue),
-                            //       items: list1
-                            //           .map<DropdownMenuItem<String>>(
-                            //               (String value) =>
-                            //                   DropdownMenuItem<String>(
-                            //                     value: value,
-                            //                     child: Text(value),
-                            //                   ))
-                            //           .toList(),
-
-                            //       // add extra sugar..
-                            //       icon: SvgPicture.asset(
-                            //           'lib/resources/assets/svg/arrow.svg'),
-                            //       iconSize: 42,
-                            //       underline: const SizedBox(),
-                            //       style: const TextStyle(color: Colors.white),
-                            //       dropdownColor: Colors.black,
-                            //     ),
-                            //   ),
-                            // ),
-                            // Container(
-                            //   margin: const EdgeInsets.only(top: 10),
-                            //   height: MediaQuery.of(context).size.height * .28,
-                            //   child: ListView.separated(
-                            //     itemBuilder: (context, index) {
-                            //       return ListTile(
-                            //         tileColor:
-                            //             const Color.fromARGB(31, 163, 163, 163),
-                            //         leading: SvgPicture.asset(
-                            //             'lib/resources/assets/svg/circle.svg'),
-                            //         title: Text(
-                            //           '${task.completed[index].name}',
-                            //           style: const TextStyle(color: Colors.white),
-                            //         ),
-                            //         subtitle: Text(
-                            //           '${task.completed[index].description}',
-                            //           style: const TextStyle(color: Colors.white),
-                            //         ),
-                            //       );
-                            //     },
-                            //     itemCount: task.completed.length,
-                            //     separatorBuilder: (context, index) {
-                            //       return const Padding(
-                            //           padding: EdgeInsets.all(8));
-                            //     },
-                            //   ),
-                            // ),
                           ],
                         ),
                       ),
