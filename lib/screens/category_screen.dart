@@ -16,7 +16,7 @@ class CategoryScreen extends StatefulWidget {
 class _MyCategoryWidgetState extends State<CategoryScreen> {
   Icon? _icon;
   int? _iconValue;
-  Color? _color;
+  Color? _color = Color(4278430196);
   int? _colorValue;
   bool iconError = false;
   bool colorError = false;
@@ -130,11 +130,13 @@ class _MyCategoryWidgetState extends State<CategoryScreen> {
                                             title: const Text('Pick a color!'),
                                             content: SingleChildScrollView(
                                               child: BlockPicker(
+                                                availableColors: const [Color(4294198070),Color(4293467747),Color(4288423856),Color(4284955319),Color(4282339765),Color(4278430196),Color(4278238420),Color(4278228616),Color(4283215696),Color(4294940672),Color(4294924066),Color(4286141768)],
                                                 pickerColor: _color ??
-                                                    Colors
-                                                        .lightBlue, //default color
+                                                    Color(4278430196), //default color
+                                                
                                                 onColorChanged: (Color color) {
                                                   //on color picked
+                                                  // debugPrint('color:  ${color.value}');
                                                   int data = color.value;
 
                                                   setState(() {

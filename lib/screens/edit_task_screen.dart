@@ -41,7 +41,7 @@ class _MyEditTaskScreenWidgetState extends State<EditTaskScreen> {
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.black87,
-        title: const Center(child: Text('Profile')),
+        title: const Center(child: Text('Edit Task')),
       ),
       body: Consumer<TodoProvider>(
         builder: (context, value, child) => Container(
@@ -54,7 +54,7 @@ class _MyEditTaskScreenWidgetState extends State<EditTaskScreen> {
                     alignment: Alignment.topLeft,
                     child: Container(
                       decoration:const BoxDecoration(
-                          color: Colors.grey,
+                          color:  Color.fromARGB(31, 163, 163, 163),
                           borderRadius: BorderRadius.all(Radius.circular(4))),
                       height: 36,
                       width: 36,
@@ -62,7 +62,7 @@ class _MyEditTaskScreenWidgetState extends State<EditTaskScreen> {
                         onTap: () => Navigator.of(context).pop(),
                         child: const Icon(
                           Icons.close,
-                          color: Colors.black,
+                          color: Colors.white,
                           size: 26,
                         ),
                       ),

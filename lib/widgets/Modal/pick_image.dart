@@ -19,23 +19,25 @@ class _PickImageModal extends State<PickImage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const Center(child: Text('Change Account Image',style: TextStyle(fontWeight: FontWeight.bold),)),
+            const Center(child: Text('Change Account Image',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),)),
             const SizedBox(
               height: 16,
             ),
             TextButton(
+              
                 onPressed: () => {},
                 style: TextButton.styleFrom(
+                  
                     minimumSize: const Size.fromHeight(50)),
                 child: const Align(
-                    alignment: Alignment.topLeft, child: Text('Take Picture'))),
+                    alignment: Alignment.topLeft, child: Text('Take Picture',style: TextStyle(color: Colors.white),))),
             TextButton(
                 onPressed: () => {pickImageForGallery(context), Navigator.of(context).pop(),},
                 style: TextButton.styleFrom(
                     minimumSize: const Size.fromHeight(50)),
                 child: const Align(
                     alignment: Alignment.topLeft,
-                    child: Text('Import form gallery'))),
+                    child: Text('Import form gallery',style: TextStyle(color: Colors.white)))),
           ],
         ),
       ),

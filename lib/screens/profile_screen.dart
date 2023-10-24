@@ -142,7 +142,7 @@ class _MyProfileWidgetState extends State<ProfileScreen> {
         },
         child: const Icon(Icons.add),
       ),
-      backgroundColor: const Color.fromARGB(31, 163, 163, 163),
+      backgroundColor: Colors.black,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: const BottomBar(),
     );
@@ -152,7 +152,7 @@ class _MyProfileWidgetState extends State<ProfileScreen> {
     return TextButton(
       onPressed: () => {},
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.black),
+        backgroundColor: MaterialStateProperty.all(Colors.purple),
         padding: MaterialStateProperty.all(
           const EdgeInsets.only(left: 48, right: 48, top: 16, bottom: 16),
         ),
@@ -219,10 +219,12 @@ void _addTaskModal(BuildContext context) {
 
 void _addAccountImage(BuildContext context, String? username) {
   showModalBottomSheet(
+    backgroundColor: Colors.black,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(25.0),
         ),
+        
       ),
       context: context,
       isScrollControlled: true,

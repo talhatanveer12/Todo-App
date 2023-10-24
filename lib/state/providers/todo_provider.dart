@@ -6,10 +6,12 @@ import 'package:todo_app/services/isar_service.dart';
 class TodoProvider extends ChangeNotifier {
   List<Todo> todo = [];
   List<Todo> completed = [];
+  List<Todo> inComplete = [];
   Todo? task;
 
   getAllPendingTask(List<Todo> todo) {
     this.todo = todo;
+    debugPrint('Test 445');
     notifyListeners();
   }
 
@@ -17,10 +19,21 @@ class TodoProvider extends ChangeNotifier {
     this.completed = completed;
     notifyListeners();
   }
+  getAllInCompletedTask(List<Todo> inComplete) {
+    this.inComplete = inComplete;
+    notifyListeners();
+  }
 
   getTaskById(Todo? task) {
     if (task != null) this.task = task;
-    else debugPrint("ewwewe");
+    notifyListeners();
+  }
+
+  getTaskByDate(DateTime dateTime) async {
+    IsarService isarService = IsarService();
+    todo = await isarService.getTaskByDate(dateTime, false);
+    debugPrint('test: ${todo.length} $dateTime');
+    completed = await isarService.getTaskByDate(dateTime, true);
     notifyListeners();
   }
 

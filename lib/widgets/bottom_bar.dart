@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomBar extends StatelessWidget{
-  const BottomBar({super.key});
-
+  final String? name;
+  const BottomBar({Key? key,this.name}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -24,7 +25,7 @@ class BottomBar extends StatelessWidget{
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset('lib/resources/assets/svg/home.svg',),
+                          name == 'Home' ? SvgPicture.asset('lib/resources/assets/svg/home.svg',) : SvgPicture.asset('lib/resources/assets/svg/home-inactive.svg',),
                           Padding(
                             padding: const EdgeInsets.only(top: 6),
                             child: Text(
@@ -47,11 +48,11 @@ class BottomBar extends StatelessWidget{
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset('lib/resources/assets/svg/calendar.svg',),
+                          name == 'Calendar' ? SvgPicture.asset('lib/resources/assets/svg/calendar.svg',) : SvgPicture.asset('lib/resources/assets/svg/calendar-inactive.svg',),
                           Padding(
                             padding: const EdgeInsets.only(top: 6),
                             child: Text(
-                              "Calendar",
+                              'Calendar',
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   fontSize: 12,

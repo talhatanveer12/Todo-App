@@ -41,11 +41,46 @@ class IsarService {
 
   Future<List<Todo>> getTask(bool q) async {
     final isar = await db;
-    return await isar.todos.filter().isCompleteEqualTo(q).findAll();
+    return q
+        ? await isar.todos.filter().isCompleteEqualTo(q).findAll()
+        : await isar.todos
+            .filter()
+            .isCompleteEqualTo(q)
+            .dateGreaterThan(DateTime.now())
+            .findAll();
+  }
+
+  Future<List<Todo>> getInCompleteTask() async {
+    final isar = await db;
+    return await isar.todos
+        .filter()
+        .isCompleteEqualTo(false)
+        .dateLessThan(DateTime.now())
+        .findAll();
+  }
+
+  Future<List<Todo>> getTaskByDate(DateTime date, bool q) async {
+    final isar = await db;
+    final DateTime startDate = DateTime(date.year, date.month, date.day);
+    final DateTime endDate = DateTime(date.year, date.month, date.day);
+    return await isar.todos
+        .filter()
+        .isCompleteEqualTo(q)
+        .dateBetween(startDate, endDate)
+        .findAll();
   }
 
   Future<Todo?> getTaskById(int id) async {
     final isar = await db;
     return await isar.todos.filter().idEqualTo(id).findFirst();
+  }
+
+  Future<void> updateState(int id) async {
+    final isar = await db;
+    Todo? task = await isar.todos.get(id);
+    if (task != null) {
+      task.isComplete = true;
+      isar.writeTxn(() => isar.todos.put(task));
+    }
   }
 }

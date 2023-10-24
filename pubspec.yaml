@@ -28,6 +28,7 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   intl: ^0.18.1
   app_usage: ^3.0.1
+  date_picker_timeline: ^1.2.5
 
 dev_dependencies:
   flutter_test:
